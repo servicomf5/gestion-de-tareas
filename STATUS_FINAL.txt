@@ -31,7 +31,7 @@ Ubicación:           PM3 (carpeta del proyecto)
    │              2=Media            │
    │              3=Alta             │
    └─────────────────────────────────┘
-   
+
    Archivos modificados:
    • funciones.py (validar_estado, validar_prioridad)
    • app.py (todas las opciones del menú)
