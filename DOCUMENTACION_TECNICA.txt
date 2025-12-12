@@ -21,13 +21,13 @@ ARQUITECTURA DEL PROYECTO
 
 Estructura de carpetas:
 PM3/
-├── app.py                  # Punto de entrada del programa
-├── funciones.py            # Módulo centralizado con todas las funciones
-├── tareas.txt              # Base de datos de tareas (formato texto)
-├── README.md               # Guía rápida de uso
+├── app.py                     # Punto de entrada del programa
+├── funciones.py               # Módulo centralizado con todas las funciones
+├── tareas.txt                 # Base de datos de tareas (formato texto)
+├── README.md                  # Guía rápida de uso
 ├── DOCUMENTACION_TECNICA.txt  # Este archivo
-├── INFORME_VALIDACION.txt  # Informe de pruebas y validación
-└── PRESENTACION_FINAL.txt  # Presentación y conclusiones
+├── INFORME_VALIDACION.txt     # Informe de pruebas y validación
+└── PRESENTACION_FINAL.txt     # Presentación y conclusiones
 
 MÓDULOS Y COMPONENTES
 ====================

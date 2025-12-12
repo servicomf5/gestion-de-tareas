@@ -41,15 +41,15 @@ PM3/
 ┌──────────────────────────────────────────────────────────────────────┐
 │  == MENÚ PRINCIPAL ==                                                │
 │                                                                      │
-│  1. Crear nueva tarea      → Agrega una nueva tarea al sistema      │
-│  2. Ver todas las tareas   → Muestra todas las tareas registradas   │
-│  3. Buscar por título      → Busca tareas (búsqueda parcial)        │
-│  4. Filtrar por estado     → Filtra tareas por su estado            │
-│  5. Filtrar por prioridad  → Filtra tareas por su prioridad         │
-│  6. Actualizar tarea       → Modifica datos de una tarea existente  │
-│  7. Eliminar tarea         → Elimina una tarea del sistema          │
-│  8. Ver estadísticas       → Muestra datos estadísticos             │
-│  0. Salir                  → Cierra el programa                     │
+│  1. Crear nueva tarea      → Agrega una nueva tarea al sistema       │
+│  2. Ver todas las tareas   → Muestra todas las tareas registradas    │
+│  3. Buscar por título      → Busca tareas (búsqueda parcial)         │
+│  4. Filtrar por estado     → Filtra tareas por su estado             │
+│  5. Filtrar por prioridad  → Filtra tareas por su prioridad          │
+│  6. Actualizar tarea       → Modifica datos de una tarea existente   │
+│  7. Eliminar tarea         → Elimina una tarea del sistema           │
+│  8. Ver estadísticas       → Muestra datos estadísticos              │
+│  0. Salir                  → Cierra el programa                      │
 └──────────────────────────────────────────────────────────────────────┘
 
 🎯 GUÍA DE ENTRADA DE DATOS
