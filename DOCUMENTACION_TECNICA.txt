@@ -1,0 +1,330 @@
+DOCUMENTACIÓN TÉCNICA - SISTEMA DE GESTIÓN DE TAREAS
+=====================================================
+
+DESCRIPCIÓN DEL SISTEMA
+=======================
+
+El Sistema de Gestión de Tareas es una aplicación de consola desarrollada en Python
+que implementa las funcionalidades CRUD (Crear, Leer, Actualizar, Eliminar) para la
+administración eficiente de tareas.
+
+Características principales:
+- Gestión completa de tareas (crear, leer, actualizar, eliminar)
+- Búsqueda y filtrado avanzado
+- Validación robusta de datos
+- Persistencia de datos en archivo de texto
+- Estadísticas en tiempo real
+- Interfaz intuitiva de menú
+
+ARQUITECTURA DEL PROYECTO
+=========================
+
+Estructura de carpetas:
+PM3/
+├── app.py                  # Punto de entrada del programa
+├── funciones.py            # Módulo centralizado con todas las funciones
+├── tareas.txt              # Base de datos de tareas (formato texto)
+├── README.md               # Guía rápida de uso
+├── DOCUMENTACION_TECNICA.txt  # Este archivo
+├── INFORME_VALIDACION.txt  # Informe de pruebas y validación
+└── PRESENTACION_FINAL.txt  # Presentación y conclusiones
+
+MÓDULOS Y COMPONENTES
+====================
+
+1. app.py (Punto de entrada)
+   - Función main(): Orquesta el programa principal
+   - Bucle while True: Mantiene el menú activo
+   - Gestiona entrada/salida del usuario
+   - Importa todas las funciones de funciones.py
+
+2. funciones.py (Módulo centralizado)
+   Contiene 20+ funciones organizadas en 5 categorías:
+
+   A) FUNCIONES DE VALIDACIÓN
+   - validar_titulo(titulo) → Valida que el título no esté vacío (máx 100 caracteres)
+   - validar_descripcion(descripcion) → Valida descripción (máx 500 caracteres)
+   - validar_estado(estado) → Valida que sea: 1=pendiente, 2=en_progreso, 3=completada
+   - validar_prioridad(prioridad) → Valida que sea: 1=baja, 2=media, 3=alta
+   - validar_id(id_str) → Convierte y valida ID como número positivo
+
+   B) FUNCIONES CRUD
+   - crear_tarea(tareas, titulo, desc, estado, prioridad) → Agrega nueva tarea
+   - obtener_tarea_por_id(tareas, tarea_id) → Busca tarea por ID
+   - actualizar_tarea(tareas, id, titulo, desc, estado, prioridad) → Modifica tarea
+   - eliminar_tarea(tareas, tarea_id) → Elimina tarea del sistema
+
+   C) FUNCIONES DE BÚSQUEDA Y FILTRADO
+   - buscar_por_titulo(tareas, termino) → Búsqueda parcial insensible a mayúsculas
+   - filtrar_por_estado(tareas, estado) → Devuelve tareas con estado específico
+   - filtrar_por_prioridad(tareas, prioridad) → Devuelve tareas con prioridad específica
+
+   D) FUNCIÓN DE ESTADÍSTICAS
+   - obtener_estadisticas(tareas) → Calcula métricas del sistema
+
+   E) FUNCIONES DE PERSISTENCIA
+   - guardar_tareas(tareas, archivo) → Escribe tareas a tareas.txt
+   - cargar_tareas(archivo) → Lee tareas desde tareas.txt
+
+   F) FUNCIONES DE VISUALIZACIÓN
+   - mostrar_menu() → Muestra el menú de opciones
+   - mostrar_tarea(tarea) → Formato de una tarea
+   - mostrar_tareas(tareas, titulo) → Lista formateada de tareas
+
+   G) FUNCIONES AUXILIARES
+   - obtener_proximo_id(tareas) → Calcula el siguiente ID disponible
+   - max_id_recursivo(tareas, indice, max_id) → FUNCIÓN RECURSIVA para encontrar máximo ID
+
+ESTRUCTURAS DE DATOS
+====================
+
+1. Lista de tareas
+   Estructura: tareas = [tarea1, tarea2, ...]
+   Tipo: list (lista de diccionarios)
+
+2. Diccionario de tarea
+   Estructura:
+   {
+       'id': int (único, autogenerado),
+       'titulo': str (1-100 caracteres),
+       'descripcion': str (1-500 caracteres),
+       'estado': str ('pendiente', 'en_progreso', 'completada'),
+       'prioridad': str ('baja', 'media', 'alta')
+   }
+
+   Nota: Los números se convierten a texto internamente (1→'pendiente', etc.)
+
+3. Tuplas de validación
+   Estructura: (es_valido: bool, valor_o_mensaje: str)
+   Ejemplo: (True, "Valor válido") o (False, "Error: campos vacíos")
+
+4. Diccionario de estadísticas
+   Estructura:
+   {
+       'total_tareas': int,
+       'pendientes': int,
+       'en_progreso': int,
+       'completadas': int,
+       'baja': int,
+       'media': int,
+       'alta': int,
+       'tasa_finalizacion': float (0-100)
+   }
+
+FORMATO DE ALMACENAMIENTO
+=========================
+
+Archivo tareas.txt (formato texto plano delimitado por pipe |):
+
+Ejemplo:
+1|Comprar leche|Ir al supermercado|pendiente|media
+2|Estudiar Python|Repasar funciones|en_progreso|alta
+3|Proyecto final|Sistema CRUD completo|completada|alta
+
+Formato: id|titulo|descripcion|estado|prioridad
+
+FLUJO DE EJECUCIÓN
+==================
+
+1. INICIO
+   ↓
+2. Cargar tareas desde tareas.txt (si existe)
+   ↓
+3. Mostrar menú principal
+   ↓
+4. Capturar opción del usuario
+   ↓
+5. SEGÚN OPCIÓN:
+   - Opción 1: Crear tarea (con validaciones)
+   - Opción 2: Ver todas las tareas
+   - Opción 3: Buscar por título
+   - Opción 4: Filtrar por estado
+   - Opción 5: Filtrar por prioridad
+   - Opción 6: Actualizar tarea
+   - Opción 7: Eliminar tarea (con confirmación)
+   - Opción 8: Ver estadísticas
+   - Opción 0: Salir
+   ↓
+6. Guardar cambios en tareas.txt
+   ↓
+7. Volver a paso 3 (excepto si opción = 0)
+   ↓
+8. FIN
+
+VALIDACIONES IMPLEMENTADAS
+==========================
+
+✓ Validación de título
+  - No puede estar vacío
+  - Máximo 100 caracteres
+  - Retorna tupla: (True, "OK") o (False, "Mensaje de error")
+
+✓ Validación de descripción
+  - No puede estar vacía
+  - Máximo 500 caracteres
+  - Retorna tupla: (True, "OK") o (False, "Mensaje de error")
+
+✓ Validación de estado
+  - Debe ser uno de: 1=pendiente, 2=en_progreso, 3=completada
+  - Se mapea automáticamente el número a texto
+  - Retorna tupla: (True, "estado_texto") o (False, None)
+
+✓ Validación de prioridad
+  - Debe ser uno de: 1=baja, 2=media, 3=alta
+  - Se mapea automáticamente el número a texto
+  - Retorna tupla: (True, "prioridad_texto") o (False, None)
+
+✓ Validación de ID
+  - Debe ser convertible a entero
+  - Debe ser número positivo (> 0)
+  - Retorna tupla: (True, id_int) o (False, "Mensaje de error")
+
+✓ Validación de opciones de menú
+  - Debe estar en rango 0-8
+  - Se valida en el bucle principal
+
+MANEJO DE ERRORES
+=================
+
+1. Archivo no encontrado
+   → Se crea tareas.txt vacío automáticamente
+
+2. Entrada de usuario inválida
+   → Se revalida hasta que sea correcta
+
+3. Tarea no existe
+   → Se notifica al usuario y continúa
+
+4. Eliminación accidental
+   → Se pide confirmación antes de proceder
+
+5. Interrupción de teclado (Ctrl+C)
+   → Se captura y termina gracefully
+
+CARACTERÍSTICAS TÉCNICAS DESTACADAS
+====================================
+
+1. RECURSIÓN
+   Función: max_id_recursivo(tareas, indice=0, max_id=0)
+   Propósito: Encontrar el máximo ID de forma recursiva
+   Implementación: Compara IDs recursivamente hasta procesar todas las tareas
+
+2. BÚSQUEDA INTELIGENTE
+   - Case-insensitive: "PYTHON", "python", "Python" son equivalentes
+   - Búsqueda parcial: busca "python" en "Estudiar Python basics"
+   - Retorna lista vacía si no hay coincidencias
+
+3. PERSISTENCIA DE DATOS
+   - Guarda automáticamente después de CRUD
+   - Carga datos al iniciar
+   - Mantiene integridad del formato
+
+4. ESTADÍSTICAS EN TIEMPO REAL
+   - Calcula totales por estado
+   - Calcula totales por prioridad
+   - Calcula tasa de finalización (completadas / total * 100)
+
+5. MODULARIZACIÓN
+   - Todas las funciones centralizadas en funciones.py
+   - Cada función tiene un propósito específico
+   - Fácil mantenimiento y extensión
+
+REQUISITOS TÉCNICOS CUMPLIDOS
+=============================
+
+✅ Entrada y salida de datos
+   - input() para captura de datos
+   - print() y f-strings para visualización
+   - Validación de todas las entradas
+
+✅ Estructuras de control
+   - if/elif/else para decisiones lógicas
+   - while True para bucle principal
+   - for loops para iteraciones
+   - break para salir de bucles cuando sea necesario
+
+✅ Funciones
+   - 20+ funciones personalizadas
+   - Parámetros y valores de retorno (return)
+   - Función recursiva (max_id_recursivo)
+
+✅ Estructuras de datos
+   - Listas: almacenamiento de tareas
+   - Diccionarios: estructura de cada tarea
+   - Tuplas: retorno de validaciones
+   - Sets: implícitamente en verificaciones
+
+✅ Modularización
+   - Código organizado en funciones.py
+   - Import de funciones en app.py
+   - Separación de responsabilidades
+
+✅ Buenas prácticas
+   - PEP 8 compliance (snake_case, indentación de 4 espacios)
+   - Docstrings en todas las funciones
+   - Comentarios explicativos en español
+   - Nombres descriptivos de variables
+
+DEPENDENCIAS
+============
+
+- Python 3.8+ (probado en Python 3.13.3)
+- Librerías estándar únicamente (sin dependencias externas)
+  - sys (para manejo de salida)
+  - (Implícitamente: builtins)
+
+CÓMO EJECUTAR
+=============
+
+1. Requisitos previos:
+   - Python 3.8 o superior instalado
+   - Acceso a la terminal/PowerShell
+
+2. Pasos:
+   ```bash
+   cd PM3
+   python app.py
+   ```
+
+3. Se abrirá el menú interactivo
+
+LIMITACIONES Y CONSIDERACIONES
+==============================
+
+1. Almacenamiento: Solo archivo de texto (no escalable a miles de registros)
+2. Concurrencia: No soporta acceso simultáneo
+3. Seguridad: Sin autenticación ni encriptación
+4. Interfaz: Basada en consola (no GUI)
+5. Búsqueda: Lineal, no optimizada para grandes datasets
+
+EXTENSIONES FUTURAS
+===================
+
+1. Interfaz gráfica con tkinter
+2. Base de datos SQL (SQLite, PostgreSQL)
+3. Sistema de usuarios y autenticación
+4. Exportación a CSV/JSON/PDF
+5. Sincronización en la nube
+6. Notificaciones y recordatorios
+7. Historial de cambios con auditoría
+8. API REST para integración
+9. Categorías y proyectos
+10. Asignación de tareas a usuarios
+
+CONCLUSIÓN
+==========
+
+Este proyecto demuestra la aplicación práctica de los conceptos fundamentales de
+Python (estructuras de control, funciones, estructuras de datos, modularización y
+validaciones) en la creación de un sistema de gestión funcional y escalable.
+
+El código es mantenible, documentado y sigue las mejores prácticas de la industria,
+convirtiéndolo en una base sólida para futuras ampliaciones.
+
+AUTOR
+=====
+
+Alumno: Eduardo Muñoz
+Correo: eduardomunoz.trabajo@gmail.com
+Desarrollado como proyecto del bootcamp de Python - Módulo 3
+Fecha: 14 de diciembre de 2025

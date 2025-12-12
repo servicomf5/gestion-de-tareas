@@ -1,0 +1,233 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                     SISTEMA DE GESTIÓN DE TAREAS                           ║
+║                         GUÍA RÁPIDA DE USO                                 ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🚀 INICIO RÁPIDO
+════════════════════════════════════════════════════════════════════════════
+
+1. Abre terminal/PowerShell en la carpeta del proyecto
+2. Ejecuta: python app.py
+3. ¡El sistema está listo para usar!
+
+📂 ARCHIVOS DEL PROYECTO
+════════════════════════════════════════════════════════════════════════════
+
+PM3/
+├── 📌 app.py                       ← EJECUTA AQUÍ
+├── ⚙️ funciones.py                 ← Toda la lógica centralizada
+├── 💾 tareas.txt                   ← Base de datos (se crea si no existe)
+├── 📖 README.md                    ← Guía de usuario
+├── 📊 DOCUMENTACION_TECNICA.txt    ← Especificaciones detalladas
+├── ✅ INFORME_VALIDACION.txt       ← Reporte de pruebas
+└── 🎯 PRESENTACION_FINAL.txt       ← Presentación del proyecto
+
+✨ CARACTERÍSTICAS PRINCIPALES
+════════════════════════════════════════════════════════════════════════════
+
+✓ Crear nuevas tareas
+✓ Ver todas las tareas registradas
+✓ Buscar tareas por título
+✓ Filtrar por estado (pendiente, en_progreso, completada)
+✓ Filtrar por prioridad (baja, media, alta)
+✓ Actualizar datos de tareas
+✓ Eliminar tareas
+✓ Ver estadísticas del sistema
+✓ Persistencia automática de datos
+
+📋 OPCIONES DEL MENÚ
+════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  == MENÚ PRINCIPAL ==                                                │
+│                                                                      │
+│  1. Crear nueva tarea      → Agrega una nueva tarea al sistema      │
+│  2. Ver todas las tareas   → Muestra todas las tareas registradas   │
+│  3. Buscar por título      → Busca tareas (búsqueda parcial)        │
+│  4. Filtrar por estado     → Filtra tareas por su estado            │
+│  5. Filtrar por prioridad  → Filtra tareas por su prioridad         │
+│  6. Actualizar tarea       → Modifica datos de una tarea existente  │
+│  7. Eliminar tarea         → Elimina una tarea del sistema          │
+│  8. Ver estadísticas       → Muestra datos estadísticos             │
+│  0. Salir                  → Cierra el programa                     │
+└──────────────────────────────────────────────────────────────────────┘
+
+🎯 GUÍA DE ENTRADA DE DATOS
+════════════════════════════════════════════════════════════════════════════
+
+TÍTULO:
+  - No puede estar vacío
+  - Máximo 100 caracteres
+  Ejemplo: "Comprar leche"
+
+DESCRIPCIÓN:
+  - No puede estar vacía
+  - Máximo 500 caracteres
+  Ejemplo: "Ir al supermercado a comprar leche fresca"
+
+ESTADO:
+  - Debe ser uno de estos valores:
+    • pendiente      (tarea no iniciada)
+    • en_progreso    (tarea en desarrollo)
+    • completada     (tarea finalizada)
+  Nota: Usa guión bajo, no espacio
+
+PRIORIDAD:
+  - Debe ser uno de estos valores:
+    • baja           (baja importancia)
+    • media          (importancia normal)
+    • alta           (alta importancia)
+
+ID:
+  - Número positivo (1, 2, 3, ...)
+  - Se asigna automáticamente al crear
+  - Se usa para buscar y actualizar tareas
+
+📊 EJEMPLO DE USO COMPLETO
+════════════════════════════════════════════════════════════════════════════
+
+Paso 1: Crear una tarea
+├─ Opción: 1
+├─ Título: Estudiar Python
+├─ Descripción: Aprender funciones y estructuras de datos
+├─ Estado: pendiente
+├─ Prioridad: alta
+└─ Resultado: Tarea creada con ID 1
+
+Paso 2: Ver todas las tareas
+├─ Opción: 2
+└─ Resultado: Se muestra la tarea creada
+
+Paso 3: Buscar por título
+├─ Opción: 3
+├─ Búsqueda: "Python"
+└─ Resultado: Encuentra la tarea "Estudiar Python"
+
+Paso 4: Actualizar tarea
+├─ Opción: 6
+├─ ID: 1
+├─ Nuevo estado: en_progreso
+└─ Resultado: Tarea actualizada y guardada
+
+Paso 5: Ver estadísticas
+├─ Opción: 8
+└─ Resultado: 1 tarea total, 1 en_progreso, etc.
+
+Paso 6: Salir
+├─ Opción: 0
+└─ Los datos se guardaron automáticamente
+
+📁 FORMATO DE DATOS
+════════════════════════════════════════════════════════════════════════════
+
+Los datos se guardan en tareas.txt en este formato:
+
+  id|titulo|descripcion|estado|prioridad
+
+Ejemplo de contenido de tareas.txt:
+  1|Comprar leche|Ir al supermercado|pendiente|media
+  2|Estudiar Python|Repasar funciones|en_progreso|alta
+  3|Hacer proyecto|Sistema CRUD|completada|alta
+
+Puedes editar este archivo manualmente si lo necesitas.
+
+✅ VALIDACIONES AUTOMÁTICAS
+════════════════════════════════════════════════════════════════════════════
+
+El sistema valida automáticamente:
+
+✓ Que el título no esté vacío
+✓ Que la descripción no esté vacía
+✓ Que el estado sea válido
+✓ Que la prioridad sea válida
+✓ Que el ID sea un número positivo
+✓ Que la tarea exista antes de actualizar/eliminar
+
+Si algún dato es inválido, el sistema te pedirá que lo corrijas.
+
+⚠️ NOTAS IMPORTANTES
+════════════════════════════════════════════════════════════════════════════
+
+1. Los IDs se asignan automáticamente comenzando desde 1
+2. No puedes cambiar el ID de una tarea (es identificador único)
+3. La búsqueda por título es parcial y no sensible a mayúsculas
+4. Antes de eliminar, el sistema pide confirmación
+5. Los cambios se guardan automáticamente en tareas.txt
+6. Si tareas.txt no existe, se crea al ejecutar el programa
+
+🔧 SOLUCIÓN DE PROBLEMAS
+════════════════════════════════════════════════════════════════════════════
+
+PROBLEMA: "ModuleNotFoundError: No module named 'funciones'"
+SOLUCIÓN: Asegúrate de estar en el directorio correcto
+          Ejecuta: cd "ruta/a/PM3"
+
+PROBLEMA: "FileNotFoundError: tareas.txt"
+SOLUCIÓN: El archivo se crea automáticamente, pero si quieres iniciarlo
+          con datos, copia el contenido de test_data.txt
+
+PROBLEMA: No puedo actualizar una tarea
+SOLUCIÓN: Verifica que:
+          - El ID existe (ver opción 2)
+          - Los nuevos datos son válidos
+          - Has dejado campos en blanco si no quieres cambiarlos
+
+PROBLEMA: Los datos no se guardan
+SOLUCIÓN: El sistema guarda automáticamente después de cada cambio
+          Verifica que tienes permisos de escritura en la carpeta
+
+💡 CONSEJOS Y TRUCOS
+════════════════════════════════════════════════════════════════════════════
+
+1. CARGAR DATOS DE PRUEBA:
+   - Lee el archivo test_data.txt
+   - Copia las líneas en tareas.txt
+   - Reinicia el programa
+
+2. BUSCAR EFICIENTEMENTE:
+   - Usa palabras clave cortas (ej: "python" en lugar de "Python basics")
+   - La búsqueda es insensible a mayúsculas
+   - Busca parcial (no necesita coincidencia exacta)
+
+3. FILTRAR POR ESTADO:
+   - "pendiente" para tareas no iniciadas
+   - "en_progreso" para tareas en desarrollo
+   - "completada" para tareas finalizadas
+
+4. FILTRAR POR PRIORIDAD:
+   - "baja" para tareas poco urgentes
+   - "media" para tareas normales
+   - "alta" para tareas urgentes
+
+5. ESTADÍSTICAS:
+   - Ve la opción 8 para entender la carga de trabajo
+   - Usa la tasa de finalización para motivarte
+   - Monitorea tareas en progreso
+
+🎓 CONCEPTOS PYTHON IMPLEMENTADOS
+════════════════════════════════════════════════════════════════════════════
+
+Este proyecto demuestra:
+
+✅ Funciones con parámetros y return
+✅ Estructuras de control (if/while/for)
+✅ Listas, diccionarios y tuplas
+✅ Validaciones y manejo de errores
+✅ Lectura/escritura de archivos
+✅ Modularización de código
+✅ Recursión (función max_id_recursivo)
+✅ PEP 8 compliance
+✅ Buenas prácticas de desarrollo
+
+📞 SOPORTE
+════════════════════════════════════════════════════════════════════════════
+
+Para más información:
+- Lee README.md (guía completa)
+- Consulta DOCUMENTACION_TECNICA.txt (especificaciones)
+- Revisa INFORME_VALIDACION.txt (pruebas realizadas)
+- Ver PRESENTACION_FINAL.txt (descripción general)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¡Disfruta usando el Sistema de Gestión de Tareas! 🎉

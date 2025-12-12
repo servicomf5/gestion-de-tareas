@@ -1,0 +1,11 @@
+1|Comprar leche|Ir al supermercado a comprar leche fresca|pendiente|media
+2|Estudiar Python|Repasar loops, funciones y estructuras de datos|en_progreso|alta
+3|Hacer tarea de matemáticas|Resolver ejercicios del tema 5 al 8|pendiente|alta
+4|Limpiar la habitación|Barrer, pasar trapo y organizar escritorio|completada|baja
+5|Llamar al dentista|Agendar cita para el próximo mes|pendiente|media
+6|Ver tutorial de Django|Completar los primeros 5 módulos del curso|en_progreso|media
+7|Hacer el proyecto del bootcamp|Implementar CRUD completo en Python|en_progreso|alta
+8|Ir al cine|Ver la película de Marvel que sale este fin de semana|pendiente|baja
+9|Estudiar Git|Aprender commits, branches y merge requests|completada|media
+10|Escribir informe|Documento sobre el proyecto del módulo 3|pendiente|alta
+11|Tomar un descanso|Luego de realizada la tarea del módulo tomar un merecido descanso|pendiente|alta
