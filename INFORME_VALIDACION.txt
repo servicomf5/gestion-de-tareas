@@ -1,7 +1,7 @@
 INFORME DE VALIDACIÓN - SISTEMA DE GESTIÓN DE TAREAS
 ======================================================
 
-FECHA: 11 de diciembre de 2025
+FECHA: 14 de diciembre de 2025
 PROYECTO: Sistema de Gestión de Tareas - Módulo 3
 ALUMNO: Eduardo Muñoz
 CORREO: eduardomunoz.trabajo@gmail.com
@@ -33,8 +33,8 @@ ASPECTOS TÉCNICOS VALIDADOS
    ✅ Ausencia de código duplicado
 
    Archivos analizados:
-   - app.py: 320 líneas de código limpio
-   - funciones.py: 350+ líneas con docstrings completos
+   - app.py: 320+ líneas de código limpio
+   - funciones.py: 380+ líneas con docstrings completos
 
 2. USO DE ESTRUCTURAS DE CONTROL
    ✅ Condicionales: if/elif/else en 15+ lugares

@@ -154,7 +154,7 @@ Seleccione la prioridad: alta
 - Los IDs se asignan automáticamente comenzando desde 1
 - No se puede actualizar el ID de una tarea (es identificador único)
 - La búsqueda por título es parcial (no requiere coincidencia exacta)
-- Los estados y prioridades deben ingresarse con guiones bajos: `en_progreso`, `baja`, etc.
+- Los estados y prioridades deben ingresarse con guiones múmeros para minimizar el error: 1, 2 ó 3
 
 ## Mejoras Futuras (Más Allá del Scope Actual)
 
