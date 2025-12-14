@@ -1,6 +1,8 @@
 INFORME DE VALIDACIÓN - SISTEMA DE GESTIÓN DE TAREAS
 ======================================================
 
+Repositorio: https://github.com/servicomf5/gestion-de-tareas
+
 FECHA: 14 de diciembre de 2025
 PROYECTO: Sistema de Gestión de Tareas - Módulo 3
 ALUMNO: Eduardo Muñoz
